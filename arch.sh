@@ -47,6 +47,10 @@ echo "LANG=es_PE.UTF-8" > /etc/locale.conf
 
 echo "KEYMAP=es" > /etc/vconsole.conf
 
+# Edit the sudo tool
+
+nano /etc/sudoers
+
 # Set the root password
 passwd
 
