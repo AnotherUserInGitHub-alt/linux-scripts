@@ -43,6 +43,10 @@ sed -i 's/#es_PE.UTF-8 UTF-8/es_PE.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo "LANG=es_PE.UTF-8" > /etc/locale.conf
 
+# Set the console locale
+
+echo "KEYMAP=es" > /etc/vconsole.conf
+
 # Set the root password
 passwd
 
