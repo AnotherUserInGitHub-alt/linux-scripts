@@ -24,7 +24,7 @@ swapon /dev/sda2
 mount /dev/sda1 /mnt
 
 # Install the base packages
-pacstrap /mnt base linux linux-firmware sudo git nano
+pacstrap /mnt base linux linux-firmware sudo git nano dhcpcd
 
 # Generate the fstab file
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -53,6 +53,10 @@ nano /etc/sudoers
 
 # Set the root password
 passwd
+
+# Enable dhcpcd
+
+systemctl enable dhcpcd
 
 # Install the GRUB boot loader
 pacman -S grub
