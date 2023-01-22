@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Ask the user for keyboard language
 echo "Welcome to the Arch Linux install script. please select your keyboard locale (en, es):"
 read locale
@@ -8,22 +10,20 @@ loadkeys $locale
 timedatectl set-ntp true
 
 # Ask the user for disk partitioning
-echo "Input the name of the disks to be partitioned:"
+echo "Input the name of the disks to be partitioned"
 read disks
 cfdisk  $disks
 
 # Display partitions
 
-echo "Giving you enough time to check on the partitions..."
-sleep 5
 fdisk -l
 sleep 6
 
 # Format the disks
-echo "Insert the number/location of the root partition:"
+echo "Insert the number of the root partition:"
 read root
 mkfs.ext4 /dev/$root
-echo "Insert the name/location of the swap partition (if any):"
+echo "Insert the name of the swap partition:"
 read swap
 mkswap /dev/$swap
 swapon /dev/$swap
@@ -48,7 +48,7 @@ echo "Name for the new host:"
 read host
 echo "$host" >> /mnt/etc/hostname
 
-echo "Where are you located?"
+echo "Where are you located? (e.g America/Caracas)"
 read location
 ln -sf /usr/share/zoneinfo/America/$location /mnt/etc/locatime
 
@@ -85,7 +85,7 @@ echo "127.0.1.1		$host.localdomain $host" >> /mnt/etc/hosts
 
 pacman -S grub
 grub-install /dev/sda
-grub-mkconfig -o /mnt/boot/grub/grub.cfg
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 # Set password for the new root
 
@@ -96,17 +96,48 @@ arch-chroot /mnt passwd root
 umount -R /mnt
 
 # Reboot
-
-echo "Rebooting in 5..."
+clear
+echo "Rebooting in 10" 
+echo "[----------]"
 sleep 1
-echo "Rebooting in 4..."
+clear
+echo "Rebooting in 9" 
+echo "[#---------]"
 sleep 1
-echo "Rebooting in 3..."
+clear
+echo "Rebooting in 8" 
+echo "[##--------]"
 sleep 1
-echo "Rebooting in 2..."
+clear
+echo "Rebooting in 7" 
+echo "[###-------]"
 sleep 1
-echo "Rebooting in 1..."
+clear
+echo "Rebooting in 6" 
+echo "[####------]"
 sleep 1
-echo "Rebooting to the new system..."
+clear
+echo "Rebooting in 5" 
+echo "[#####-----]"
+sleep 1
+clear
+echo "Rebooting in 4" 
+echo "[######----]"
+sleep 1
+clear
+echo "Rebooting in 3" 
+echo "[#######---]"
+sleep 1
+clear
+echo "Rebooting in 2" 
+echo "[########--]"
+sleep 1
+clear
+echo "Rebooting in 1" 
+echo "[#########-]"
+sleep 1
+clear
+echo "Rebooting to the new system"
+echo "[##########]"
 sleep 2
 reboot
